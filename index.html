@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <label>Username</label>
+    <input type="text" id="username">
+    <button id="button">Go</button>
+    <p id="name"></p>
+
+    <script>
+
+        $(document).ready(function(){
+            console.log("loaded");
+            $("#button").on("click", function(){
+                var username = $("#username").val();
+                var url = "https://api.github.com/users/" + username;
+                $.get(url, displayName);
+                // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+                function displayName(data) {
+                console.log(data);
+                $("#name").html(data.name);
+                };
+            });
+        });
+ 
+            
+    </script>
+    
+</body>
+</html>
